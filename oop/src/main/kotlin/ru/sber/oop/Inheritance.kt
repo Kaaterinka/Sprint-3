@@ -1,13 +1,21 @@
-package ru.sber.oop
+package src.main.kotlin.ru.sber.oop
 
-class Room(val name: String, val size: Int) {
+open class Room(val name: String, val size: Int) {
+    var monster: Monster = Goblin("hit", 120)
 
-    val dangerLevel = 5
+    constructor(_name: String) : this(name = _name, size = 100)
+
+    protected open val dangerLevel = 5
 
     fun description() = "Room: $name"
 
-    fun load() = "Nothing much to see here..."
-
+    open fun load() = "Nothing much to see here..."
 }
 
-//TODO: create class TownSquare here...
+class TownSquare() : Room("Town Square", 1000) {
+    override val dangerLevel = super.dangerLevel - 3
+
+    final override fun load(): String {
+        return monster.getSalutation()
+    }
+}
