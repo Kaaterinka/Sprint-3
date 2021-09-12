@@ -17,26 +17,28 @@ class Player(
     override fun attack(opponent: Fightable): Int {
         if (!isBlessed) {
             opponent.healthPoints -= damageRoll
-        } else if (isBlessed) {
+            return damageRoll
+        } else {
             opponent.healthPoints -= 2 * damageRoll
+            return damageRoll * 2
         }
-        return damageRoll
     }
 }
 
-abstract class Monster(var name: String, var description: String) : Fightable {
+    abstract class Monster(var name: String, var description: String) : Fightable {
 
-    override fun attack(opponent: Fightable): Int {
-        opponent.healthPoints -= damageRoll
-        return damageRoll
+        override fun attack(opponent: Fightable): Int {
+            opponent.healthPoints -= damageRoll
+            return damageRoll
+        }
     }
-}
 
-class Goblin(override val powerType: String, override var healthPoints: Int) : Monster("Goblin", "This is a goblin") {
-    override val damageRoll: Int
-        get() = super.damageRoll / 2
-}
+    class Goblin(override val powerType: String, override var healthPoints: Int) :
+        Monster("Goblin", "This is a goblin") {
+        override val damageRoll: Int
+            get() = super.damageRoll / 2
+    }
 
-fun Monster.getSalutation(): String {
-    return "Hello,  $this.name"
-}
+    fun Monster.getSalutation(): String {
+        return "Hello,  $this.name"
+    }
