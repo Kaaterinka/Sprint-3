@@ -15,21 +15,23 @@ class Player(
 ) : Fightable {
 
     override fun attack(opponent: Fightable): Int {
+        var sumDamage = damageRoll
         if (!isBlessed) {
-            opponent.healthPoints -= damageRoll
-            return damageRoll
+            opponent.healthPoints -= sumDamage
         } else {
-            opponent.healthPoints -= 2 * damageRoll
-            return damageRoll * 2
+            sumDamage = damageRoll * 2
+            opponent.healthPoints -= sumDamage
         }
+        return sumDamage
     }
 }
 
     abstract class Monster(var name: String, var description: String) : Fightable {
 
         override fun attack(opponent: Fightable): Int {
+            val sumDamage = damageRoll
             opponent.healthPoints -= damageRoll
-            return damageRoll
+            return sumDamage
         }
     }
 
