@@ -1,16 +1,8 @@
 package ru.sber.qa
 
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.mockkObject
-import io.mockk.unmockkAll
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertDoesNotThrow
-import java.time.Clock
-import java.time.Instant
-import java.time.ZoneOffset
+import io.mockk.*
+import org.junit.jupiter.api.*
+import java.time.*
 
 internal class HrDepartmentTest {
 

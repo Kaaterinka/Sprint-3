@@ -1,10 +1,7 @@
 package ru.sber.qa
 
-import io.mockk.every
-import io.mockk.mockkObject
-import io.mockk.unmockkAll
+import io.mockk.*
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 import kotlin.random.Random
 
